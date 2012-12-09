@@ -653,6 +653,10 @@ else
     libc_common_cflags += -DANDROID_SMP=0
 endif
 
+ifeq ($(BOARD_USE_NASTY_PTHREAD_CREATE_HACK),true)
+  libc_common_cflags += -DNASTY_PTHREAD_CREATE_HACK
+endif
+
 # crtbrand.c needs <stdint.h> and a #define for the platform SDK version.
 libc_crt_target_cflags += \
     -I$(LOCAL_PATH)/include  \
